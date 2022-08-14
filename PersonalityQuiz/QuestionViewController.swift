@@ -73,6 +73,7 @@ class QuestionViewController: UIViewController {
         super.viewDidLoad()
         updateUI()
     }
+     
     
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
         let currentAnswers = questions[questionIndex].answers
