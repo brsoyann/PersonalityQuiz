@@ -10,6 +10,7 @@ import Foundation
 struct Answer {
     var text: String
     var type: AnimalType
+    static var chosens: [Answer] = []
 }
 
-var answersChosen: [Answer] = []
+

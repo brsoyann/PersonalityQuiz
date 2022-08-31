@@ -80,18 +80,18 @@ class QuestionViewController: UIViewController {
         
         switch sender {
         case singleButton1:
-            answersChosen.append(currentAnswers[0])
+            Answer.chosens.append(currentAnswers[0])
         case singleButton2:
-            answersChosen.append(currentAnswers[1])
+            Answer.chosens.append(currentAnswers[1])
         case singleButton3:
-            answersChosen.append(currentAnswers[2])
+            Answer.chosens.append(currentAnswers[2])
         case singleButton4:
-            answersChosen.append(currentAnswers[3])
+            Answer.chosens.append(currentAnswers[3])
         default:
             break
         }
         
-        nextQuestion()
+        getNextQuestion()
     }
     
     @IBAction func multipleAnswerButtonPressed() {
@@ -99,31 +99,31 @@ class QuestionViewController: UIViewController {
         let currentAnswers = questions[questionIndex].answers
         
         if multiSwitch1.isOn {
-            answersChosen.append(currentAnswers[0])
+            Answer.chosens.append(currentAnswers[0])
         }
         if multiSwitch2.isOn {
-            answersChosen.append(currentAnswers[1])
+            Answer.chosens.append(currentAnswers[1])
         }
         if multiSwitch3.isOn {
-            answersChosen.append(currentAnswers[2])
+            Answer.chosens.append(currentAnswers[2])
         }
         if multiSwitch4.isOn {
-            answersChosen.append(currentAnswers[3])
+            Answer.chosens.append(currentAnswers[3])
         }
         
-        nextQuestion()
+        getNextQuestion()
     }
     
     @IBAction func rangedAnswerButtonPressed() {
         let currentAnswers = questions[questionIndex].answers
         let index = Int(round(rangedSlider.value * Float(currentAnswers.count - 1)))
         
-        answersChosen.append(currentAnswers[index])
+        Answer.chosens.append(currentAnswers[index])
         
-        nextQuestion()
+        getNextQuestion()
     }
     
-    func nextQuestion() {
+    func getNextQuestion() {
         questionIndex += 1
         
         if questionIndex < questions.count {
@@ -134,7 +134,7 @@ class QuestionViewController: UIViewController {
     }
     
     @IBSegueAction func showResults(_ coder: NSCoder) -> ResultsViewController? {
-        return ResultsViewController(coder: coder, responses: answersChosen)
+        return ResultsViewController(coder: coder, responses: Answer.chosens)
     }
     
     func updateUI() {
